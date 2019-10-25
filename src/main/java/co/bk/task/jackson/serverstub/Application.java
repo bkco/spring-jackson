@@ -37,6 +37,24 @@ public class Application {
     return "{\"test_key\": \"helloWorld\", \"GetCallerIdentityResponse\":{\"GetCallerIdentityResult\":{\"Account\":\"128193004453\",\"Arn\":\"arn:aws:sts::128193004453:assumed-role/test/xyz\",\"UserId\":\"AROAIDRHXISJPDVWNDY2Y:xyz\"},\"ResponseMetadata\":{\"RequestId\":\"ed0e898e-c8d6-11e9-a549-a57c1765306b\"}}}";
   }
 
+  @ResponseStatus(code = HttpStatus.OK)
+  @RequestMapping(method = RequestMethod.GET, value = {"/complex_data_xml"}, produces = "text/xml")
+  public String getComplexDataAsXml(@RequestHeader Map<String, String> requestHeaders, HttpServletResponse response) {
+
+    //return "{\"test_key\": \"helloWorld\", \"GetCallerIdentityResponse\":{\"GetCallerIdentityResult\":{\"Account\":\"128193004453\",\"Arn\":\"arn:aws:sts::128193004453:assumed-role/test/xyz\",\"UserId\":\"AROAIDRHXISJPDVWNDY2Y:xyz\"},\"ResponseMetadata\":{\"RequestId\":\"ed0e898e-c8d6-11e9-a549-a57c1765306b\"}}}";
+
+    return "<GetCallerIdentityResponse xmlns=\"https://sts.amazonaws.com/doc/2011-06-15/\">\n" +
+      "  <GetCallerIdentityResult>\n" +
+      "    <Arn>arn:aws:sts::036396015065:assumed-role/Shibboleth-PowerUser/brkelly</Arn>\n" +
+      "    <UserId>AROAQQ6K7DXMT2EWVKITN:brkelly</UserId>\n" +
+      "    <Account>036396015065</Account>\n" +
+      "  </GetCallerIdentityResult>\n" +
+      "  <ResponseMetadata>\n" +
+      "    <RequestId>629aeb7e-d86f-11e9-918a-c7adbd7fdb70</RequestId>\n" +
+      "  </ResponseMetadata>\n" +
+      "</GetCallerIdentityResponse>";
+  }
+
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
   }

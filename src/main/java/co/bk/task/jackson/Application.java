@@ -122,6 +122,22 @@ public class Application {
     System.out.println("print" + responseAsJson.toString());
   }
 
+  private static void bindComplexDataAsXml_willWork() {
+
+    // SEE https://www.baeldung.com/jackson-nested-values
+
+    //RestTemplate restTemplate = new RestTemplate();
+    RestTemplate restTemplate = registerDeserializerWithRestTemplate();
+
+    HttpHeaders httpHeaders = new HttpHeaders();
+    httpHeaders.setAccept(Arrays.asList(MediaType.TEXT_XML));
+    HttpEntity<String> entity = new HttpEntity<>(httpHeaders);
+
+    ResponseEntity<BindGetCallerIdentityResponseDeserializerEnabled> responseAsJson = restTemplate.exchange("http://localhost:8080/complex_data", HttpMethod.GET, entity, BindGetCallerIdentityResponseDeserializerEnabled.class);
+
+    System.out.println("print" + responseAsJson.toString());
+  }
+
   private static RestTemplate registerDeserializerWithRestTemplate() {
 
     // Manual registration of objectmapper with RestTemplate when not using SpringIOC e.g https://stackoverflow.com/questions/9381665/how-can-we-configure-the-internal-jackson-mapper-when-using-resttemplate
@@ -140,5 +156,15 @@ public class Application {
     restTemplate.getMessageConverters().add(messageConverter);
     return restTemplate;
   }
+
+
+
+//  public static ObjectMapper getDefaultObjectMapperForXML() {
+//    JacksonXmlModule xmlModule = new JacksonXmlModule();
+//    xmlModule.setDefaultUseWrapper(false);
+//    return new XmlMapper(xmlModule);
+//  }
+
+
 
 }
