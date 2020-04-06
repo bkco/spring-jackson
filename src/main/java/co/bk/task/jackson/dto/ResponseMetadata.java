@@ -1,4 +1,4 @@
-package co.bk.task.jackson;
+package co.bk.task.jackson.dto;
 
 public class ResponseMetadata {
 

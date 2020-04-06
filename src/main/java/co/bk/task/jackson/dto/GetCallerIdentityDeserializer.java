@@ -1,4 +1,4 @@
-package co.bk.task.jackson;
+package co.bk.task.jackson.dto;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;

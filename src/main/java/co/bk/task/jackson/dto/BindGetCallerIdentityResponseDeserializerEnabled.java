@@ -1,6 +1,4 @@
-package co.bk.task.jackson;
-
-import java.io.Serializable;
+package co.bk.task.jackson.dto;
 
 /**
  * {
@@ -18,7 +16,7 @@ import java.io.Serializable;
  * }
  *
  */
-public class BindGetCallerIdentityResponse {
+public class BindGetCallerIdentityResponseDeserializerEnabled {
 
   private GetCallerIdentityResponse GetCallerIdentityResponse;
 
@@ -32,11 +30,11 @@ public class BindGetCallerIdentityResponse {
 
   private String test_key;
 
-  public co.bk.task.jackson.GetCallerIdentityResponse getGetCallerIdentityResponse() {
+  public co.bk.task.jackson.dto.GetCallerIdentityResponse getGetCallerIdentityResponse() {
     return GetCallerIdentityResponse;
   }
 
-  public void setGetCallerIdentityResponse(co.bk.task.jackson.GetCallerIdentityResponse getCallerIdentityResponse) {
+  public void setGetCallerIdentityResponse(co.bk.task.jackson.dto.GetCallerIdentityResponse getCallerIdentityResponse) {
     GetCallerIdentityResponse = getCallerIdentityResponse;
   }
 }
