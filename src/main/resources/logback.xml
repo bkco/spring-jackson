@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  the library can automatically reload configuration files when they’re modified. -->
+<configuration debug="false" scan="false">
+
+  <!-- So we can modify log configuration at runtime via a JMX console. -->
+  <jmxConfigurator/>
+
+  <!-- The <springProperty> tag lets you expose properties from the Spring Environment for use within Logback
+  Example usage in /resources/application.yml
+  logging:
+    enableJsonFormat: true
+    level:
+      de:
+        is24: DEBUG
+      org:
+        springframework: INFO
+  -->
+  <springProperty name="LOGGING_LEVEL_CO_BK_TASK" source="logging.level.co.bk.task"/>
+  <springProperty name="LOGGING_ENABLE_JSON_FORMAT" source="logging.enableJsonFormat" defaultValue="false"/>
+
+  <logger name="co.bk.task" level='${LOGGING_LEVEL_CO_BK_TASK:-INFO}'/>
+  <logger name="org.springframework" level="INFO"/>
+  <logger name="org.elasticsearch.transport" level="ERROR"/>
+  <logger name="javax.enterprise.resource.webcontainer.jsf.config" level="OFF"/>
+
+  <if condition='"${LOGGING_ENABLE_JSON_FORMAT}".equals("true")'>
+    <then>
+      <appender name="log-to-stdout-as-json" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+          <provider class="net.logstash.logback.composite.loggingevent.LoggingEventPatternJsonProvider">
+            <pattern>
+              {
+              "logger": "%logger",
+              "thread": "%thread",
+              "level": "%level",
+              "message": "%message",
+              "mdc": "%X"
+              }
+            </pattern>
+          </provider>
+        </encoder>
+      </appender>
+
+      <appender name="async-log-to-stdout-as-json" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="log-to-stdout-as-json" />
+      </appender>
+
+      <root level="INFO">
+        <appender-ref ref="async-log-to-stdout-as-json"/>
+      </root>
+    </then>
+    <else>
+
+      <appender name="log-to-stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- developer friendly log format -->
+        <encoder>
+          <pattern>%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX", UTC} %-6level [%thread] %logger{36} - [%X] - %msg%n</pattern>
+          <charset>utf8</charset>
+        </encoder>
+      </appender>
+
+      <root level="INFO">
+        <appender-ref ref="log-to-stdout"/>
+      </root>
+
+    </else>
+  </if>
+</configuration>

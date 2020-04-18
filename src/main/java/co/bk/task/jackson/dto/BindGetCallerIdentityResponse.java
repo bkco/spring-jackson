@@ -1,4 +1,4 @@
-package co.bk.task.jackson;
+package co.bk.task.jackson.dto;
 
 /**
  * {
@@ -16,7 +16,7 @@ package co.bk.task.jackson;
  * }
  *
  */
-public class BindGetCallerIdentityResponseDeserializerEnabled {
+public class BindGetCallerIdentityResponse {
 
   private GetCallerIdentityResponse GetCallerIdentityResponse;
 
@@ -30,11 +30,11 @@ public class BindGetCallerIdentityResponseDeserializerEnabled {
 
   private String test_key;
 
-  public co.bk.task.jackson.GetCallerIdentityResponse getGetCallerIdentityResponse() {
+  public co.bk.task.jackson.dto.GetCallerIdentityResponse getGetCallerIdentityResponse() {
     return GetCallerIdentityResponse;
   }
 
-  public void setGetCallerIdentityResponse(co.bk.task.jackson.GetCallerIdentityResponse getCallerIdentityResponse) {
+  public void setGetCallerIdentityResponse(co.bk.task.jackson.dto.GetCallerIdentityResponse getCallerIdentityResponse) {
     GetCallerIdentityResponse = getCallerIdentityResponse;
   }
 }

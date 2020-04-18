@@ -1,4 +1,4 @@
-package co.bk.task.jackson;
+package co.bk.task.jackson.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;

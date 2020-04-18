@@ -1,5 +1,6 @@
 package co.bk.task.jackson;
 
+import co.bk.task.jackson.dto.OptionalPojo;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
