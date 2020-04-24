@@ -11,13 +11,13 @@ package co.bk.task.jackson.jsonwithlist;
                 {
                     "action_name": "submit_quotation",
                     "meta": {
-                        "permission": "consolidatorPsg:can submit PSG quotations in own tenant"
+                        "permission": "supplier1:can submit quotations in own tenant"
                     }
                 },
                 {
                     "action_name": "delete_quotation",
                     "meta": {
-                        "permission": "consolidatorPsg:can delete own quotations in own tenant"
+                        "permission": "supplier1:can delete own quotations in own tenant"
                     }
                 }
             ]

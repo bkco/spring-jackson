@@ -28,13 +28,13 @@ import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS
                 {
                     "action_name": "submit_quotation",
                     "meta": {
-                        "permission": "consolidatorPsg:can submit PSG quotations in own tenant"
+                        "permission": "supplier1:can submit quotations in own tenant"
                     }
                 },
                 {
                     "action_name": "delete_quotation",
                     "meta": {
-                        "permission": "consolidatorPsg:can delete own quotations in own tenant"
+                        "permission": "supplier1:can delete own quotations in own tenant"
                     }
                 }
             ]
@@ -75,7 +75,7 @@ public class JsonWithListTest {
 
         try {
 
-            String json = "{\"result_code\":0,\"state\":{\"state_name\":\"Quotation created\",\"actions\":[{\"action_name\":\"submit_quotation\",\"meta\":{\"permission\":\"consolidatorPsg:can submit PSG quotations in own tenant\"}},{\"action_name\":\"delete_quotation\",\"meta\":{\"permission\":\"consolidatorPsg:can delete own quotations in own tenant\"}}]}}";
+            String json = "{\"result_code\":0,\"state\":{\"state_name\":\"Quotation created\",\"actions\":[{\"action_name\":\"submit_quotation\",\"meta\":{\"permission\":\"supplier1:can submit quotations in own tenant\"}},{\"action_name\":\"delete_quotation\",\"meta\":{\"permission\":\"supplier1:can delete own quotations in own tenant\"}}]}}";
             JsonWithList jsonAsObject = defaultObjectMapper().readValue(json, JsonWithList.class);
 
             System.out.println(jsonAsObject.toString());
